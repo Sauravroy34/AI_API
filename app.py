@@ -4,7 +4,7 @@ from flask import Flask , request ,jsonify
 app = Flask(__name__)
 
 
-@app.route("/Ai/<text>")
+@app.route("/Ai/<text>",method=["POST"])
 def bot(text):
 
     client = Client()
