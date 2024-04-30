@@ -1,10 +1,9 @@
 from g4f.client import Client
 from flask import Flask , request ,jsonify
-
 app = Flask(__name__)
 
 
-@app.route("/Ai/<text>",method=["POST"])
+@app.route("/Ai/<text>")
 def bot(text):
 
     client = Client()
@@ -16,5 +15,6 @@ def bot(text):
     data = (response.choices[0].message.content)
     return jsonify({"data":data})
 
-# if __name__ == "__main__":
-#     app.run(debug=True )
+if __name__ == "__main__":
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
