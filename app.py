@@ -1,9 +1,14 @@
 from g4f.client import Client
 from flask import Flask , request ,jsonify
-app = Flask(__name__)
+import sys
+import tkinter
 
 
-@app.route("/Ai/<text>")
+class mainframe():
+    def __init__(self) -> None:
+        pass
+
+
 def bot(text):
 
     client = Client()
@@ -13,8 +18,12 @@ def bot(text):
         
     )
     data = (response.choices[0].message.content)
-    return jsonify({"data":data})
+    print(data)
 
-if __name__ == "__main__":
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
+
+while True:
+    text = input("enter your doubt ")
+    if text.upper() == "CLOSE":
+        sys.exit()
+    bot(text)
+    
