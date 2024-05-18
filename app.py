@@ -1,12 +1,8 @@
 from g4f.client import Client
 from flask import Flask , request ,jsonify
 import sys
-import tkinter
 
 
-class mainframe():
-    def __init__(self) -> None:
-        pass
 
 
 def bot(text):
@@ -18,7 +14,7 @@ def bot(text):
         
     )
     data = (response.choices[0].message.content)
-    print(data)
+    return data
 
 
 while True:
