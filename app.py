@@ -1,10 +1,10 @@
 from g4f.client import Client
 from flask import Flask , request ,jsonify
-import sys
+
+app = Flask(__name__)
 
 
-
-
+@app.route("/AskAi/<text>")
 def bot(text):
 
     client = Client()
@@ -14,12 +14,8 @@ def bot(text):
         
     )
     data = (response.choices[0].message.content)
-    return data
+    return jsonify({"response":data}) ,200
 
 
-while True:
-    text = input("enter your doubt ")
-    if text.upper() == "CLOSE":
-        sys.exit()
-    bot(text)
-    
+if __name__ == "__main__":
+    app.run(debug=True)
